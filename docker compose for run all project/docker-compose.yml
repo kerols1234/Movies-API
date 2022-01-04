@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  movies-api:
+    image: kerolssamer348/moviesapi:latest
+    ports:
+      - "63575:80"
+  ms-sql-server:
+    image: kerolssamer348/api_database:latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "yourStrong(!)Password"
+    ports:
+      - "1433:1433"
+  front:
+    image: nadahkhaledd/movies_reviews_new
+    ports:
+      - "8080:4040"
