@@ -1,4 +1,4 @@
-using AngularAPI.Data;
+using Movies_API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -77,14 +77,22 @@ namespace Movies_API
             try
             {
                 context.Database.Migrate();
-                context.Movies.AddRange(
+                var moviesList = new List<Movies>()
+                {
                     new Movies() { Name = "iron-man", Release = "2008", Duration = 2.6 },
                     new Movies() { Name = "spider-man", Release = "2002", Duration = 2.1 },
                     new Movies() { Name = "super-man", Release = "1978", Duration = 2.23 },
                     new Movies() { Name = "thor", Release = "2011", Duration = 1.55 },
                     new Movies() { Name = "hulk", Release = "2003", Duration = 2.18 },
-                    new Movies() { Name = "fantastic-four", Release = "2005", Duration = 1.46 }
-                );
+                    new Movies() { Name = "fantastic four", Release = "2005", Duration = 1.46 }
+                };
+                foreach (Movies movies in moviesList)
+                {
+                    if (!context.Movies.Any(obj => obj.Name == movies.Name))
+                    {
+                        context.Movies.Add(movies);
+                    }
+                }
                 context.SaveChanges();
             }
             catch (Exception ex)

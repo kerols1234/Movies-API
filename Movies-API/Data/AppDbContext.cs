@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Movies_API.Models;
 
-namespace AngularAPI.Data
+namespace Movies_API.Data
 {
     public class AppDbContext : DbContext
     {

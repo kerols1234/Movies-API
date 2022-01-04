@@ -1,4 +1,4 @@
-﻿using AngularAPI.Data;
+﻿using Movies_API.Data;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
