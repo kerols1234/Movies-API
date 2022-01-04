@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Movies_API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +77,15 @@ namespace Movies_API
             try
             {
                 context.Database.Migrate();
+                context.Movies.AddRange(
+                    new Movies() { Name = "iron-man", Release = "2008", Duration = 2.6 },
+                    new Movies() { Name = "spider-man", Release = "2002", Duration = 2.1 },
+                    new Movies() { Name = "super-man", Release = "1978", Duration = 2.23 },
+                    new Movies() { Name = "thor", Release = "2011", Duration = 1.55 },
+                    new Movies() { Name = "hulk", Release = "2003", Duration = 2.18 },
+                    new Movies() { Name = "fantastic-four", Release = "2005", Duration = 1.46 }
+                );
+                context.SaveChanges();
             }
             catch (Exception ex)
             {
